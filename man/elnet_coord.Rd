@@ -21,3 +21,8 @@ estimation of parameter beta in y=beta*x
 \description{
 fits elastic net to data using coordinate descent algorithm
 }
+\examples{
+y = x\%*\%beta+e
+elnet_coord(x, y, lambda=1, alpha=0.5, tol=1e-6)
+
+}

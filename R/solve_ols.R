@@ -5,6 +5,7 @@
 #' @param p number of cores to use for parallel
 #' @return estimation of parameter x in Ax=b
 #' @export
+#' @examples solve_ols(A, b, tol = 1e-10, methods="JS", p=2)
 
 solve_ols = function(A, b, tol, methods, p){
     D = diag(A)
@@ -42,25 +43,8 @@ solve_ols = function(A, b, tol, methods, p){
     }
 }
 
-# #TEST
-# a1=2
-# n1=10
-# D1= matrix(0, n1, n1)
-# L1= matrix(0, n1, n1)
-# U1= matrix(0, n1, n1)
-# for(i in 1:n1-1){
-#     D1[i,i]=a1;
-#     L1[i,i+1]=-1;
-#     U1[i+1,i]=-1
-# }
-# D1[n1,n1]=a1
-# A=D1+L1+U1
-# m1=n1/2
-# v=rep(c(1,0),times=m1)
-# b=A%*%v
-# p=2
-# tol = 1e-10
-# solve_ols(A, b, tol = 1e-10, methods="JS", p=2)
+
+
 
 
 

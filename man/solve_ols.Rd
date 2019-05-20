@@ -21,3 +21,6 @@ estimation of parameter x in Ax=b
 \description{
 solves a linear system using Gauss-Seidel or Jacobi(parallel) method
 }
+\examples{
+solve_ols(A, b, tol = 1e-10, methods="JS", p=2)
+}

@@ -5,6 +5,10 @@
 #' @param alpha proportion of usage in l1 penalty comparing with l2
 #' @return estimation of parameter beta in y=beta*x
 #' @export
+#' @examples
+#' y = x%*%beta+e
+#' elnet_coord(x, y, lambda=1, alpha=0.5, tol=1e-6)
+#'
 
 elnet_coord = function(x, y, lambda, alpha, tol){
     n = length(y)
@@ -13,21 +17,9 @@ elnet_coord = function(x, y, lambda, alpha, tol){
     cda(x, y, n, p, lambda, alpha, N, tol)
 }
 
-#TEST
-# rm(list = ls())
-# p = 20
-# n = 100
-# x=matrix(0,nrow = n, ncol = p)
-# beta=c(2,0,-2,0,1,0,-1,0,rep(0,12))
-# x[,1:2] = mvrnorm(n, mu = c(0,0), Sigma = matrix(c(1,0.8,0.8,1), ncol = 2))
-# x[,5:6] = mvrnorm(n, mu = c(0,0), Sigma = matrix(c(1,0.8,0.8,1), ncol = 2))
-# x[,3:4] = mvrnorm(n, mu = c(0,0), Sigma = matrix(c(1,0,0,1), ncol = 2))
-# for(i in 7:p){
-#     x[,i] = rnorm(n, mean = 0, sd = 1)
-# }
-# e = rnorm(n, mean = 0, sd = 1)
-# y = x%*%beta+e
-# elnet_coord(x, y, lambda=1, alpha=0.5, tol=1e-6)
+
+
+
 
 
 

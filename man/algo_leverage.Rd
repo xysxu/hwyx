@@ -23,9 +23,5 @@ algorithmic leveraging for linear regression using uniform and leverage score ba
 e = rnorm(500,0,1)
 x = rt(500, df = 6)
 y = -x+e
-Lmodel = lm(y ~ 0 + x)
-beta=coef(Lmodel)
-beta_m=matrix(beta, 500, 1)
-w=lm.influence(Lmodel)$hat
 algo_leverage(x, y, r=10, methods="UNIF")
 }
