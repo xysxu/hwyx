@@ -6,7 +6,18 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+## Weighted leveraging algorithm
 
+This algorithm attempts to approximate the linear regression coefficient $\hat{β}$ in a dataset of sample size n using only a randomly selected subset of size $r< n$. Selecting r samples uniformly at random $(\pi_i = 1/n)$ often produces biased estimate, while selecting samples with probability proportional to their leverage scores $\pi_{i} \propto h_{i}$ largely alleviates this problem.
+
+## Iterative Methods for Solving Linear System of Equations
+
+In this function, we basically can apply Gauss-Seidel, Jacobi (sequential) and Jacobi (parallel) to do iteration methods to solve linear models. This function provides three options in the iterative methods for the user. In view of the convergence, the function will automatically examine the convergence and return the results only the methods are convergent urder user's case.
+
+## Coordinate Descent for Elastic Net
+
+we derived a coordinate descent algorithm for finding a solution to the lasso problem. The goal of this exercise is to derive and implement a similar algorithm for solving an elastic net problem
+$$\min _{\beta \in \mathbb{R}^{p}} \frac{1}{n} \sum_{i=1}^{n}\left(y_{i}-x_{i}^{\top} \beta\right)^{2}+\lambda\left[(1-\alpha)\|\beta\|_{2}^{2}+\alpha\|\beta\|_{1}\right]$$
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
