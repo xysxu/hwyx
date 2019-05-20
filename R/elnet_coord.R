@@ -3,6 +3,7 @@
 #' @param y dependent variable
 #' @param lambda LASSO tuning
 #' @param alpha proportion of usage in l1 penalty comparing with l2
+#' @param tol tolerance
 #' @return estimation of parameter beta in y=beta*x
 #' @export
 #' @examples

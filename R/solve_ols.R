@@ -1,8 +1,9 @@
-#' solves a linear system using Gauss-Seidel or Jacobi(parallel) method
+#' solves a linear system using Gauss-Seidel or Jacobi method
 #' @param A matrix
 #' @param b vector
 #' @param tol tolarence
 #' @param p number of cores to use for parallel
+#' @param methods "GS", "JS", "JP" for Gauss-Seide, Jacobi(sequential), Jacobi(parallel)
 #' @return estimation of parameter x in Ax=b
 #' @export
 #' @examples solve_ols(A, b, tol = 1e-10, methods="JS", p=2)

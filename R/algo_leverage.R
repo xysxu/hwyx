@@ -2,6 +2,7 @@
 #' @param x independent variable
 #' @param y dependent variable
 #' @param r subsample size
+#' @param methods "UNIF", "BLEV" uniformly or proportionally(leverage scores) sample
 #' @return estimation of parameter beta in y=beta*x
 #' @export
 #' @examples e = rnorm(500,0,1)
