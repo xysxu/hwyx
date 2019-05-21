@@ -18,6 +18,8 @@ In this function, we basically can apply Gauss-Seidel, Jacobi (sequential) and J
 
 we derived a coordinate descent algorithm for finding a solution to the lasso problem. The goal of this exercise is to derive and implement a similar algorithm for solving an elastic net problem
 $$\min _{\beta \in \mathbb{R}^{p}} \frac{1}{n} \sum_{i=1}^{n}\left(y_{i}-x_{i}^{\top} \beta\right)^{2}+\lambda\left[(1-\alpha)\|\beta\|_{2}^{2}+\alpha\|\beta\|_{1}\right]$$
+
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -25,6 +27,17 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+## Package needed before using
+
+```{r setup, eval=FALSE}
+library(foreach)
+library(iterators)
+library(Rlinsolve)
+library(pracma)
+library(parallel)
+library(gdata)
+library(doParallel)
+library(MASS)
+#my package
 library(hwyx)
 ```
