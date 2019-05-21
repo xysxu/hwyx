@@ -15,5 +15,6 @@ elnet_coord
 algo_leverage
 
 # tips
-help(function name) for details of usage, examples
+Help(function name) for details of usage, examples
 
+See vignette for packages needed before using
