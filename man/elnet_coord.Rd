@@ -14,6 +14,8 @@ elnet_coord(x, y, lambda, alpha, tol)
 \item{lambda}{LASSO tuning}
 
 \item{alpha}{proportion of usage in l1 penalty comparing with l2}
+
+\item{tol}{tolerance}
 }
 \value{
 estimation of parameter beta in y=beta*x

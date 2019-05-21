@@ -12,6 +12,8 @@ algo_leverage(x, y, r, methods)
 \item{y}{dependent variable}
 
 \item{r}{subsample size}
+
+\item{methods}{"UNIF", "BLEV" uniformly or proportionally(leverage scores) sample}
 }
 \value{
 estimation of parameter beta in y=beta*x

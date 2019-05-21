@@ -2,7 +2,7 @@
 % Please edit documentation in R/solve_ols.R
 \name{solve_ols}
 \alias{solve_ols}
-\title{solves a linear system using Gauss-Seidel or Jacobi(parallel) method}
+\title{solves a linear system using Gauss-Seidel or Jacobi method}
 \usage{
 solve_ols(A, b, tol, methods, p)
 }
@@ -13,13 +13,15 @@ solve_ols(A, b, tol, methods, p)
 
 \item{tol}{tolarence}
 
+\item{methods}{"GS", "JS", "JP" for Gauss-Seide, Jacobi(sequential), Jacobi(parallel)}
+
 \item{p}{number of cores to use for parallel}
 }
 \value{
 estimation of parameter x in Ax=b
 }
 \description{
-solves a linear system using Gauss-Seidel or Jacobi(parallel) method
+solves a linear system using Gauss-Seidel or Jacobi method
 }
 \examples{
 solve_ols(A, b, tol = 1e-10, methods="JS", p=2)
