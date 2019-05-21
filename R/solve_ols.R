@@ -23,7 +23,7 @@
 #' v=rep(c(1,0),times=m1)
 #' b=A%*%v
 #' p=2
-#' solve_ols(A, b, tol = 1e-10, methods="JS", p=2)
+#' solve_ols(A, b, tol = 1e-10, methods="JP", p=2)
 
 solve_ols = function(A, b, tol, methods, p){
     D = diag(A)
@@ -49,7 +49,7 @@ solve_ols = function(A, b, tol, methods, p){
                 cat("Jacob Sequential doesn't converge")
                 stop()
             }
-        }else{
+        }else{if(methods == "JP"){
             C_j=norm(-solve(D)%*%(L + U),type = "2")
             if(C_j < 1){
                 JP(A, b, tol, p)
@@ -57,6 +57,7 @@ solve_ols = function(A, b, tol, methods, p){
                 cat("Jacob Paralell doesn't converge")
                 stop()
             }
+        }
         }
     }
 }

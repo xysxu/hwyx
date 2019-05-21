@@ -40,5 +40,5 @@ m1=n1/2
 v=rep(c(1,0),times=m1)
 b=A\%*\%v
 p=2
-solve_ols(A, b, tol = 1e-10, methods="JS", p=2)
+solve_ols(A, b, tol = 1e-10, methods="JP", p=2)
 }
