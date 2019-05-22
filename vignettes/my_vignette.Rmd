@@ -6,19 +6,77 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{r, include = T}
+library(hwyx)
+library(foreach)
+library(iterators)
+library(Rlinsolve)
+library(pracma)
+library(parallel)
+library(gdata)
+library(doParallel)
+library(MASS)
+```
 ## Weighted leveraging algorithm
 
 This algorithm attempts to approximate the linear regression coefficient $\hat{β}$ in a dataset of sample size n using only a randomly selected subset of size $r< n$. Selecting r samples uniformly at random $(\pi_i = 1/n)$ often produces biased estimate, while selecting samples with probability proportional to their leverage scores $\pi_{i} \propto h_{i}$ largely alleviates this problem.
+
+# Example
+```{r, include = T}
+e = rnorm(500,0,1)
+x = rt(500, df = 6)
+y = -x+e
+algo_leverage(x, y, r=10, methods="UNIF")
+```
 
 ## Iterative Methods for Solving Linear System of Equations
 
 In this function, we basically can apply Gauss-Seidel, Jacobi (sequential) and Jacobi (parallel) to do iteration methods to solve linear models. This function provides three options in the iterative methods for the user. In view of the convergence, the function will automatically examine the convergence and return the results only the methods are convergent urder user's case.
 
+#Example
+
+```{r, include = T}
+
+p = 20
+n = 100
+x=matrix(0,nrow = n, ncol = p)
+beta=c(2,0,-2,0,1,0,-1,0,rep(0,12))
+x[,1:2] = mvrnorm(n, mu = c(0,0), Sigma = matrix(c(1,0.8,0.8,1), ncol = 2))
+x[,5:6] = mvrnorm(n, mu = c(0,0), Sigma = matrix(c(1,0.8,0.8,1), ncol = 2))
+x[,3:4] = mvrnorm(n, mu = c(0,0), Sigma = matrix(c(1,0,0,1), ncol = 2))
+for(i in 7:p){
+x[,i] = rnorm(n, mean = 0, sd = 1)
+}
+e = rnorm(n, mean = 0, sd = 1)
+y = x%*%beta+e
+elnet_coord(x, y, lambda=1, alpha=0.5, tol=1e-6)
+```
+
 ## Coordinate Descent for Elastic Net
 
 we derived a coordinate descent algorithm for finding a solution to the lasso problem. The goal of this exercise is to derive and implement a similar algorithm for solving an elastic net problem
 $$\min _{\beta \in \mathbb{R}^{p}} \frac{1}{n} \sum_{i=1}^{n}\left(y_{i}-x_{i}^{\top} \beta\right)^{2}+\lambda\left[(1-\alpha)\|\beta\|_{2}^{2}+\alpha\|\beta\|_{1}\right]$$
-
+#Example
+```{r, include = T}
+a1=2
+n1=10
+D1= matrix(0, n1, n1)
+L1= matrix(0, n1, n1)
+U1= matrix(0, n1, n1)
+for(i in 1:n1-1){
+D1[i,i]=a1;
+L1[i,i+1]=-1;
+U1[i+1,i]=-1
+ }
+D1[n1,n1]=a1
+A=D1+L1+U1
+m1=n1/2
+v=rep(c(1,0),times=m1)
+b=A%*%v
+p=2
+solve_ols(A, b, tol = 1e-10, methods="JS", p=2)
+```
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
